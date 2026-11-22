@@ -1,0 +1,22 @@
+{
+  "name": "programme",
+  "displayName": "Programme",
+  "instruction": "agents/Programme/instruction.txt",
+  "tools": [
+    "update_personal_program"
+  ],
+  "toolsets": [
+    {
+      "toolset": "sessions_api",
+      "toolIds": [
+        "get_session",
+        "search_sessions"
+      ]
+    }
+  ],
+  "llmAgent": {},
+  "description": "Recherche les sessions via l'API et gère le programme personnel sans chevauchement. Rend la main au Concierge pour tout autre sujet.",
+  "modelSettings": {
+    "model": "gemini-3.5-flash"
+  }
+}

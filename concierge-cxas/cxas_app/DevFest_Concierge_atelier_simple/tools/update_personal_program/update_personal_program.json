@@ -1,0 +1,9 @@
+{
+  "name": "update_personal_program",
+  "pythonFunction": {
+    "name": "update_personal_program",
+    "pythonCode": "tools/update_personal_program/python_function/python_code.py",
+    "description": "Consulter, ajouter ou retirer une session du programme personnel. operation: list, add, remove. L\u0027ID doit venir de l\u0027API sessions. Vérifie les chevauchements avec les horaires de référence ; aucune place n\u0027est réservée."
+  },
+  "displayName": "update_personal_program"
+}

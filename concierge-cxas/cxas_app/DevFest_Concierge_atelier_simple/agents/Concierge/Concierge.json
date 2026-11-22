@@ -1,0 +1,18 @@
+{
+  "name": "concierge",
+  "displayName": "Concierge",
+  "instruction": "agents/Concierge/instruction.txt",
+  "tools": [
+    "get_event_information",
+    "end_session"
+  ],
+  "childAgents": [
+    "Programme",
+    "Assistance"
+  ],
+  "llmAgent": {},
+  "description": "Accueille l'utilisateur, répond aux questions pratiques et transfère vers Programme (sessions, programme personnel) ou Assistance (demandes d'assistance).",
+  "modelSettings": {
+    "model": "gemini-3.5-flash"
+  }
+}

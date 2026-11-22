@@ -1,0 +1,42 @@
+{
+  "name": "devfest-concierge-atelier-simple",
+  "displayName": "DevFest Paris 2026 - Concierge atelier simple",
+  "description": "Assistant DevFest Paris 2026 : sessions, programme personnel, informations pratiques et demandes d'assistance.",
+  "rootAgent": "Concierge",
+  "loggingSettings": {
+    "conversationLoggingSettings": {
+      "disableConversationLogging": true
+    }
+  },
+  "variableDeclarations": [
+    {
+      "name": "personal_program",
+      "description": "Programme personnel JSON : sessions sélectionnées indexées par session_id. Aucune place réservée.",
+      "schema": {
+        "type": "STRING",
+        "default": "{}"
+      }
+    },
+    {
+      "name": "support_tickets",
+      "description": "Demandes d'assistance ouvertes pendant la session, au format JSON.",
+      "schema": {
+        "type": "STRING",
+        "default": "{}"
+      }
+    }
+  ],
+  "dataStoreSettings": {},
+  "languageSettings": {
+    "defaultLanguageCode": "fr-FR",
+    "supportedLanguageCodes": [
+      "fr-FR"
+    ]
+  },
+  "timeZoneSettings": {
+    "timeZone": "Europe/Paris"
+  },
+  "modelSettings": {
+    "model": "gemini-3.5-flash"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "tools": {
+    "get_event_information": {
+      "dataStoreTool": {
+        "dataStoreSource": {
+          "dataStore": {
+            "name": "projects/653518548304/locations/eu/collections/default_collection/dataStores/devfest-faq-2026"
+          }
+        }
+      }
+    }
+  },
+  "toolsets": {
+    "sessions_api": {
+      "openApiToolset": {
+        "url": "https://devfest-sessions-653518548304.europe-west1.run.app"
+      }
+    }
+  }
+}

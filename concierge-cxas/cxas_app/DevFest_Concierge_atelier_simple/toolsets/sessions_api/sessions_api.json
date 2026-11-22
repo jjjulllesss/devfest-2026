@@ -1,0 +1,11 @@
+{
+  "name": "sessions_api",
+  "displayName": "sessions_api",
+  "openApiToolset": {
+    "openApiSchema": "toolsets/sessions_api/open_api_toolset/open_api_schema.yaml",
+    "apiAuthentication": {
+      "serviceAgentIdTokenAuthConfig": {
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# Local environment and third-party SDK checkout
+.venv/
+vendor/
+
+# Generated packaging and test caches
+build/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+
+# OS and editor junk
+.DS_Store
+
+# Credentials and local auth
+.env
+.env.*
+*.key
+*.pem
+**/application_default_credentials.json
+**/*-credentials.json
+
+# One-off installer output
+research/*-install.log
+research/scrapi-install.log

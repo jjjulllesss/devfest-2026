@@ -1,0 +1,9 @@
+{
+  "name": "create_support_ticket",
+  "displayName": "create_support_ticket",
+  "pythonFunction": {
+    "name": "create_support_ticket",
+    "pythonCode": "tools/create_support_ticket/python_function/python_code.py",
+    "description": "Ouvrir immédiatement une demande d'assistance pour un problème décrit, sans brouillon ni confirmation. Catégories access, session, technical, other. Renvoie la référence existante si le même problème a déjà été ouvert dans la session."
+  }
+}

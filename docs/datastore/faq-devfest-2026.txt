@@ -1,0 +1,109 @@
+# FAQ — DevFest Paris 2026
+
+Dernière mise à jour : 22 novembre 2026
+
+## Informations générales
+
+### Qu’est-ce que le DevFest Paris 2026 ?
+Le DevFest Paris est une conférence technique organisée par le GDG Paris. L’édition 2026 est la huitième édition. L’événement est indépendant et à but non lucratif.
+
+### Quand a lieu le DevFest Paris 2026 ?
+L’événement a lieu le vendredi 27 novembre 2026.
+
+### Quels sont les horaires de l’événement ?
+La billetterie officielle annonce une plage horaire de 08 h 00 à 18 h 00 (heure de Paris). Pour connaître l’horaire précis de chaque conférence ou atelier, consultez le programme de l’événement.
+
+### Qui organise le DevFest Paris ? Est-ce un événement organisé par Google ?
+Le DevFest Paris est organisé par le GDG Paris, une communauté indépendante. Les événements GDG ne sont pas organisés par Google ou ses filiales. Pour l’édition 2026, Google for Developers est sponsor Platinum.
+
+### À qui s’adresse la conférence ?
+La conférence s’adresse notamment aux développeurs, ingénieurs, data scientists, étudiants et responsables techniques (CTOs, managers).
+
+### Quelle est la taille de l’événement ?
+La billetterie annonce plus de 450 participants attendus, plus de 30 speakers et plus de 25 sessions réparties sur cinq tracks.
+
+## Lieu, accès et services sur place
+
+### Où a lieu le DevFest Paris 2026 ?
+L’événement se tient à La Fabrique de la Connaissance, sur le site Comet Meetings – Arboretum à Nanterre. L’adresse indiquée sur l’annonce Meetup du GDG Paris est : 1 place des Papeteries, 92000 Nanterre. Le point d’entrée précis sur le site n’est pas encore renseigné dans cette FAQ.
+
+### Comment venir en transports en commun ?
+Le site officiel mentionne la gare de Nanterre-Université pour situer le lieu. Aucun itinéraire détaillé ni temps de marche n’est précisé dans cette FAQ : pensez à vérifier votre trajet sur un service de transport en commun avant de venir.
+
+### Le lieu est-il accessible aux personnes à mobilité réduite (PMR) ?
+Oui, le site officiel annonce un accès PMR autonome. Les modalités détaillées d’accompagnement individuel ne sont pas précisées dans cette FAQ.
+
+### Y a-t-il un parking ?
+Oui, le site officiel annonce un parking sur place. Le nombre de places, les conditions d’accès, la tarification et la présence éventuelle de bornes de recharge ne sont pas précisés.
+
+### Y a-t-il un vestiaire ?
+Oui, le site officiel annonce la présence de vestiaires. Les horaires, les conditions de dépôt et les éventuelles consignes concernant les bagages ne sont pas précisés.
+
+### Y a-t-il du Wi-Fi sur place ? Quel est le mot de passe ?
+Oui, le site officiel annonce du Wi-Fi fibre. Le nom du réseau et le mot de passe ne sont pas disponibles dans cette FAQ et sont communiqués sur place par l’organisation.
+
+### Quels espaces sont disponibles sur place ?
+Le site officiel présente 12 salles privatisées, deux terrasses et une zone de networking. Un plan 3D du lieu sur quatre niveaux est également consultable sur le site officiel dans la section « Explorez le lieu ».
+
+## Billetterie et inscription
+
+### Où acheter un billet ?
+Les billets sont vendus sur la billetterie officielle : https://www.billetweb.fr/devfest-paris-2026
+
+### Quel est le prix du billet ?
+Au 22 novembre 2026, le site officiel affiche un billet « Late Bird » au tarif de 79 €. Les disponibilités et le tarif en vigueur doivent être vérifiés directement sur la billetterie officielle.
+
+### Une inscription sur Meetup suffit-elle pour entrer ?
+Non. L’annonce Meetup du GDG Paris précise que l’entrée requiert un billet acheté sur la billetterie officielle ; une simple inscription Meetup ne donne pas accès à l’événement.
+
+### Peut-on acheter un billet sur place ?
+Un billet acheté est obligatoire pour accéder à l’événement. La possibilité d’acheter un billet sur place n’est pas confirmée.
+
+### Quelles sont les conditions de remboursement, de transfert de billet ou de facturation ?
+Ces conditions ne sont pas détaillées dans cette FAQ. Consultez la billetterie officielle et les informations liées à votre commande.
+
+## Programme et formats
+
+### Quels sujets sont abordés pendant la conférence ?
+Le site officiel met en avant les thématiques suivantes : IA & Data, Cloud & DevSecOps, Frontend, Backend, Mobile et Architecture. La billetterie indique un programme organisé en cinq tracks.
+
+### Quels formats de sessions sont proposés ?
+Le site officiel présente plusieurs formats :
+- Conférences : 45 minutes (questions-réponses incluses), pouvant inclure des diapositives et/ou du live coding.
+- Lunch Talks : 20 minutes (questions-réponses incluses).
+- Workshops : 90 minutes, au format pratique.
+Le site mentionne également des quick talks et une table ronde.
+
+### Où trouver les horaires, les salles et les intervenants de chaque session ?
+Cette FAQ regroupe les informations pratiques générales et ne contient pas le détail des créneaux. Consultez le programme officiel de l’événement pour connaître l’horaire, la salle et les intervenants de chaque session.
+
+### Toutes les sessions sont-elles en français ?
+Cette FAQ ne garantit pas une langue unique pour l’ensemble du programme. Vérifiez la langue indiquée sur la fiche de chaque session.
+
+### Faut-il réserver sa place pour les sessions ou les ateliers ?
+Les règles de réservation des ateliers ne sont pas établies dans cette FAQ.
+
+## Restauration
+
+### Le repas est-il inclus ? Y a-t-il des informations sur les menus et les allergènes ?
+Les informations concernant les repas inclus dans le billet, les menus, les options alimentaires et les allergènes ne sont pas encore renseignées dans cette FAQ.
+
+### Le dîner des speakers et sponsors est-il ouvert à tous les participants ?
+Un dîner speakers/sponsors est mentionné dans certaines offres de partenariat, mais il n’est pas présenté comme inclus dans un billet participant standard.
+
+## Code de conduite, captation et partenaires
+
+### Y a-t-il un code de conduite ?
+Oui. L’événement applique les règles et le code de conduite global des communautés GDG, visant un environnement accueillant, sûr, bienveillant et sans harcèlement. Tout comportement inacceptable peut entraîner une exclusion.
+
+### Des photos ou des vidéos seront-elles prises pendant l’événement ?
+Oui. Les conditions GDG indiquent que des photos, des enregistrements audio ou vidéo et des diffusions peuvent avoir lieu pendant l’événement. Pour toute demande relative à votre image, adressez-vous à l’organisation.
+
+### Les replays et supports des conférences seront-ils disponibles ?
+La publication, les délais et les liens d’éventuels replays ou supports ne sont pas confirmés dans cette FAQ.
+
+### Quels partenaires sont annoncés ?
+Au 22 novembre 2026, le site officiel affiche notamment Google for Developers comme sponsor Platinum et Sticker Mule comme partenaire merchandising.
+
+### Comment contacter l’équipe pour le sponsoring ?
+Pour les demandes de sponsoring, le site officiel indique l’adresse : gdgpariscontact@gmail.com.

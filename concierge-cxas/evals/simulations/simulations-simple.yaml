@@ -1,0 +1,81 @@
+# Concierge simplifié (DevFest_Concierge_atelier_simple) : handoff natif, un sujet par tour, ton de production.
+# Non exécutés tant que l'app n'est pas poussée. Les identifiants viennent des vraies réponses. Aucune source ni mention de démonstration n'est attendue.
+evals:
+  - name: simple_recherche_ajout
+    tags: [P0, simple, programme, handoff]
+    session_parameters: {}
+    steps:
+      - goal: "Trouver l'atelier de Jules puis l'ajouter au programme."
+        max_turns: 4
+        response_guide: >-
+          Parle français. Demande « Trouve l'atelier de Jules », puis « Ajoute-le à mon programme ».
+          Ne donne aucun identifiant de session.
+        success_criteria: >-
+          Le Concierge transfère vers Programme, qui recherche réellement la session de Jules
+          puis l'ajoute avec un statut ok et rappelle qu'aucune place n'est réservée.
+    expectations:
+      - "La recherche et l'ajout utilisent les outils réels ; aucun identifiant n'est demandé à l'utilisateur ni inventé."
+      - "Le transfert n'est pas annoncé et ne demande aucune autorisation."
+
+  - name: simple_conflit
+    tags: [P0, simple, programme, conflict]
+    session_parameters: {}
+    steps:
+      - goal: "Ajouter Jules, tenter d'ajouter la session Astro GitOps qui chevauche, puis afficher le programme."
+        max_turns: 6
+        response_guide: >-
+          Parle français. Demande « Ajoute l'atelier de Jules à mon programme »,
+          puis « Ajoute aussi la session Astro GitOps », puis « Garde Jules et montre mon programme ».
+        success_criteria: >-
+          L'ajout d'Astro GitOps est refusé pour chevauchement, Jules reste sélectionné,
+          et la liste finale est relue avec l'outil et contient Jules sans Astro GitOps.
+    expectations:
+      - "Le conflit est expliqué ; aucune session n'est remplacée silencieusement."
+      - "L'affichage du programme provient d'un appel list dans le tour courant."
+
+  - name: simple_faq
+    tags: [P0, simple, faq]
+    session_parameters: {}
+    steps:
+      - goal: "Connaître la date et le lieu du DevFest, puis le mot de passe Wi-Fi."
+        max_turns: 4
+        response_guide: >-
+          Parle français. Demande « Où et quand a lieu le DevFest ? », puis « Quel est le mot de passe Wi-Fi ? ».
+        success_criteria: >-
+          La date et le lieu viennent de la FAQ ; le mot de passe Wi-Fi est signalé comme absent, sans invention.
+    expectations:
+      - "Chaque réponse pratique consulte get_event_information dans le tour et utilise la FAQ, sans citer de source."
+      - "Aucune information absente de la FAQ n'est inventée."
+
+  - name: simple_ticket_immediat
+    tags: [P0, simple, assistance]
+    session_parameters: {}
+    steps:
+      - goal: "Obtenir une demande d'assistance pour un problème de facturation GCP, puis redemander le même ticket."
+        max_turns: 4
+        response_guide: >-
+          Parle français. Dis « Mon projet GCP affiche une erreur de facturation, crée un ticket »,
+          puis répète exactement la même phrase.
+        success_criteria: >-
+          Assistance ouvre immédiatement une demande de catégorie technical, présente la référence
+          exacte renvoyée par l'outil ; la répétition renvoie la même référence.
+    expectations:
+      - "Aucun diagnostic, contact ou confirmation n'est demandé avant la création."
+      - "La référence présentée est exactement celle retournée par create_support_ticket."
+
+  - name: simple_changement_de_sujet
+    tags: [P1, simple, handoff, routing]
+    session_parameters: {}
+    steps:
+      - goal: "Passer du programme à la FAQ puis à un ticket et revenir au programme sans rien perdre."
+        max_turns: 8
+        response_guide: >-
+          Parle français. Envoie successivement, en attendant chaque réponse :
+          « Ajoute l'atelier de Jules à mon programme », « Où a lieu le DevFest ? »,
+          « Le Wi-Fi ne marche pas, crée un ticket », « Montre mon programme ».
+        success_criteria: >-
+          Chaque demande est traitée par le bon agent après transfert : ajout réel, FAQ,
+          ticket réel, puis programme relu contenant toujours Jules.
+    expectations:
+      - "Programme et Assistance rendent la main au Concierge quand le sujet change, sans répondre eux-mêmes hors de leur périmètre."
+      - "Le programme et le ticket sont conservés d'un sujet à l'autre."

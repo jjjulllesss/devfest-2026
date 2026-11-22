@@ -1,0 +1,13 @@
+{
+  "name": "get_event_information",
+  "dataStoreTool": {
+    "name": "get_event_information",
+    "description": "Chercher dans la FAQ de DevFest Paris 2026 : date, lieu, accessibilité et informations pratiques. Pas les horaires des sessions. Signaler les informations manquantes.",
+    "dataStoreSource": {
+      "dataStore": {
+        "name": "$env_var"
+      }
+    }
+  },
+  "displayName": "get_event_information"
+}

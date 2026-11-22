@@ -1,0 +1,13 @@
+{
+  "name": "assistance",
+  "displayName": "Assistance",
+  "instruction": "agents/Assistance/instruction.txt",
+  "tools": [
+    "create_support_ticket"
+  ],
+  "llmAgent": {},
+  "description": "Ouvre immédiatement une demande d'assistance pour un problème décrit, puis rend la main au Concierge.",
+  "modelSettings": {
+    "model": "gemini-3.5-flash"
+  }
+}
