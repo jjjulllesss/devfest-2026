@@ -128,7 +128,8 @@ blockquote.prompt p:first-of-type{border-top:0}
 .checklist li{list-style:none;margin-left:-1.2em}
 /* Lien vers la présentation, au-dessus du guide */
 .pres{display:flex;align-items:center;gap:14px;margin:0 0 22px;padding:10px 18px;background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:8px;font-size:.95rem;color:var(--text2)}
-.pres .ic{flex:none;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:.7rem;display:flex;align-items:center;justify-content:center;padding-left:2px}
+.pres .ic{flex:none;width:32px;height:32px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center}
+.pres .ic svg{display:block;margin-left:1px}
 .pres span{flex:1}.pres a{font-weight:500;white-space:nowrap}
 /* Section Contact et feedback, en bas de page */
 .contact{margin:1.2em 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:16px}
@@ -362,7 +363,7 @@ def page(slug: str, title: str, body: str) -> str:
 <div class="layout">
   <aside class="sidebar"><h4>Sur cette page</h4><div id="toc"></div></aside>
   <main>
-    <div class="pres"><i class="ic">&#9654;</i><span>Une introduction de 8 slides présente CX Agent Studio et sa place dans l’offre Google.</span><a href="{PRESENTATION}">Voir la présentation &rarr;</a></div>
+    <div class="pres"><i class="ic"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="#fff"/></svg></i><span>Une introduction de 8 slides présente CX Agent Studio et sa place dans l’offre Google.</span><a href="{PRESENTATION}">Voir la présentation &rarr;</a></div>
 {body}
     <h2 id="contact" data-toc="Contact et feedback">Contact et feedback</h2>
     <div class="contact">
