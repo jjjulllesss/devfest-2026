@@ -13,6 +13,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 REQUIRED_DOWNLOADS = ["datastore/faq-devfest-2026.txt", "brief-arc-concierge.txt"]
+PRESENTATION = "presentation/introduction.html"
 
 
 def main() -> int:
@@ -24,14 +25,24 @@ def main() -> int:
     page = index.read_text(encoding="utf-8")
     errors = []
 
-    for attr, url in re.findall(r'\b(href|src)="([^"]+)"', page):
-        if url.startswith(("#", "data:", "mailto:")) or urlparse(url).scheme:
+    if f'href="{PRESENTATION}"' not in page:
+        errors.append(f"le guide ne contient pas de lien vers {PRESENTATION}")
+    slides = site / PRESENTATION
+    if not slides.is_file():
+        errors.append(f"{PRESENTATION} est absent de {site}/")
+
+    for html_file in (index, slides):
+        if not html_file.is_file():
             continue
-        target = unquote(urlparse(url).path)
-        if target in ("", "./"):
-            continue
-        if not (site / target).is_file():
-            errors.append(f"{attr}=\"{url}\" : fichier absent de {site}/")
+        text = html_file.read_text(encoding="utf-8")
+        for attr, url in re.findall(r'\b(href|src)="([^"]+)"', text):
+            if url.startswith(("#", "data:", "mailto:")) or urlparse(url).scheme:
+                continue
+            target = unquote(urlparse(url).path)
+            if target in ("", "./"):
+                continue
+            if not (html_file.parent / target).is_file():
+                errors.append(f"{html_file.relative_to(site)} : {attr}=\"{url}\" : fichier absent")
 
     for rel in REQUIRED_DOWNLOADS:
         if f'href="{rel}" download' not in page:

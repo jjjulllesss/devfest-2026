@@ -17,7 +17,7 @@ Document pédagogique non officiel.
 | `concierge-cxas/cxas_app/DevFest_Concierge_atelier_simple/` | L’application CX Agent Studio de référence (export SCRAPI) |
 | `concierge-cxas/environments/` | Environnement de cette application (URL d’API et Data Store du projet de répétition) |
 | `concierge-cxas/evals/simulations/` | Scénarios de simulation de l’application |
-| `docs/` | Guide participant, captures (`images/`), brief Arc, contrat de l’API des sessions (`sessions.openapi.yaml`) et FAQ à importer dans le Data Store (`datastore/`) |
+| `docs/` | Guide participant, présentation d’introduction (`presentation/`), captures (`images/`), brief Arc, contrat de l’API des sessions (`sessions.openapi.yaml`) et FAQ à importer dans le Data Store (`datastore/`) |
 | `data/agenda.json` | Catalogue des sessions, utilisé par les tests locaux |
 | `tests/` | Tests locaux des outils Python de l’application |
 | `scripts/build_guides_html.py` | Génère le site HTML du guide (style Google Cloud) dans `build/`, dossier non versionné |
@@ -43,7 +43,7 @@ python scripts/build_guides_html.py
 python scripts/check_site.py
 ```
 
-Le dossier `build/` contient le site à héberger : `index.html` (CSS et JavaScript intégrés), les captures (`images/`) et les fichiers à télécharger (`brief-arc-concierge.txt`, qui inclut le contrat de l’API, et `datastore/faq-devfest-2026.txt`). Seules les polices Roboto sont chargées en ligne ; hors connexion, une police système les remplace.
+Le dossier `build/` contient le site à héberger : `index.html` (CSS et JavaScript intégrés), la présentation d’introduction (`presentation/introduction.html`, liée en haut du guide), les captures (`images/`) et les fichiers à télécharger (`brief-arc-concierge.txt`, qui inclut le contrat de l’API, et `datastore/faq-devfest-2026.txt`). Seules les polices Roboto sont chargées en ligne ; hors connexion, une police système les remplace.
 
 ## Publication sur GitHub Pages
 

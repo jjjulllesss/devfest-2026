@@ -32,6 +32,9 @@ GUIDES = [
     ("guide-participant", "Guide participant", "Construire le concierge DevFest avec Arc", "index.html"),
 ]
 
+# Présentation d’introduction (diaporama HTML autonome), publiée à côté du guide
+PRESENTATION = "presentation/introduction.html"
+
 # Fichiers que les participants téléchargent depuis le guide (chemins relatifs à docs/)
 DOWNLOADS = ["datastore/faq-devfest-2026.txt", "brief-arc-concierge.txt"]
 
@@ -123,6 +126,10 @@ blockquote.prompt p:first-of-type{border-top:0}
 .checkpoint>.cp-title:before{content:"✓";display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--green-dark);color:#fff;font-size:.75rem}
 .checkpoint .tablewrap{margin:0;border:0;border-radius:0}
 .checklist li{list-style:none;margin-left:-1.2em}
+/* Lien vers la présentation, au-dessus du guide */
+.pres{display:flex;align-items:center;gap:14px;margin:0 0 22px;padding:10px 18px;background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:8px;font-size:.95rem;color:var(--text2)}
+.pres .ic{flex:none;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;font-size:.7rem;display:flex;align-items:center;justify-content:center;padding-left:2px}
+.pres span{flex:1}.pres a{font-weight:500;white-space:nowrap}
 /* Section Contact et feedback, en bas de page */
 .contact{margin:1.2em 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:16px}
 .carte{display:flex;align-items:center;gap:20px;padding:22px 24px;background:var(--bg2);border:1px solid var(--border);border-radius:8px}
@@ -142,7 +149,7 @@ main .carte .btn{color:#fff}.carte .btn:hover{background:var(--blue-dark);text-d
 /* Responsive / impression */
 @media(max-width:960px){.sidebar{display:none}.layout{padding:0 18px}main{padding-top:24px}main h1{font-size:1.8rem}.topbar{padding:0 14px}.brand span.long{display:none}}
 @media(max-width:600px){.brand b{display:none}.where .pos span{max-width:42vw}.where{gap:10px}}
-@media print{.topbar,.sidebar,.copy{display:none}.layout{display:block;padding:0}main{max-width:none}main h2{break-after:avoid}.checkpoint,blockquote,pre,table{break-inside:avoid}}
+@media print{.topbar,.sidebar,.copy,.pres{display:none}.layout{display:block;padding:0}main{max-width:none}main h2{break-after:avoid}.checkpoint,blockquote,pre,table{break-inside:avoid}}
 """
 
 JS = """
@@ -355,6 +362,7 @@ def page(slug: str, title: str, body: str) -> str:
 <div class="layout">
   <aside class="sidebar"><h4>Sur cette page</h4><div id="toc"></div></aside>
   <main>
+    <div class="pres"><i class="ic">&#9654;</i><span>Une introduction de 8 slides présente CX Agent Studio et sa place dans l’offre Google.</span><a href="{PRESENTATION}">Voir la présentation &rarr;</a></div>
 {body}
     <h2 id="contact" data-toc="Contact et feedback">Contact et feedback</h2>
     <div class="contact">
@@ -395,6 +403,7 @@ def main() -> None:
     # Captures et fichiers à télécharger, référencés par le guide (liens relatifs)
     docs = ROOT / "docs"
     shutil.copytree(docs / "images", out / "images", dirs_exist_ok=True, ignore=shutil.ignore_patterns(".DS_Store"))
+    shutil.copytree(docs / "presentation", out / "presentation", dirs_exist_ok=True, ignore=shutil.ignore_patterns(".DS_Store"))
     for rel in DOWNLOADS:
         dest = out / rel
         dest.parent.mkdir(parents=True, exist_ok=True)
