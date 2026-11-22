@@ -19,6 +19,15 @@ Vous repartez avec un agent déployé sur votre projet GCP et un modèle que vou
 - brancher une API et une FAQ comme sources de vérité ;
 - tester l’agent, lire une trace d’appel d’outil et reconnaître une réponse inventée.
 
+## Architecture
+
+Voici l’architecture complète que vous allez construire au fil de l’atelier :
+
+![Architecture du Concierge DevFest : ressources du projet Google Cloud du participant et API publique Cloud Run](images/architecture.svg)
+
+- **Dans votre projet Google Cloud (`eu`)** : l’application **CX Agent Studio** (agent racine **Concierge**, sous-agents **Programme** et **Assistance**, état de session JSON) ainsi que le bucket **Cloud Storage** et le **Data Store** de la FAQ.
+- **Hors de votre projet (sur Internet)** : l’**API Sessions** est déjà hébergée sur un service **Cloud Run** public en lecture seule (`GET /sessions` et `GET /sessions/{id}`, sans clé ni authentification).
+
 ## Avant de commencer (5 min)
 
 Vérifiez ces points avant de commencer la création de votre agent :
@@ -84,6 +93,8 @@ Ensuite, lisez l’architecture :
 ## Tâche 2. Créer l’application et la recherche (18 min)
 
 Dans cette tâche, vous créez votre application, lancez l’import de la FAQ en arrière-plan, puis faites construire par Arc le premier jalon : la recherche de sessions.
+
+![Périmètre de la tâche 2 : création de l’application, import FAQ et recherche via l’API publique](images/architecture-tache-2.svg)
 
 ### Créer l’application
 
@@ -162,6 +173,8 @@ Dans l’aperçu, envoyez :
 
 Dans cette tâche, vous ajoutez le programme personnel et vérifiez qu’il refuse un chevauchement.
 
+![Périmètre de la tâche 3 : outil Python update_personal_program et état personal_program](images/architecture-tache-3.svg)
+
 1. Dans la même conversation avec Arc, envoyez :
 
 > Ajoute maintenant le programme personnel, sans FAQ ni assistance pour l’instant. Ajoute un outil update_personal_program avec les opérations list, add et remove. Pour add, lis d’abord la session avec get_session ; refuse l’ajout si la session chevauche une session déjà présente, sans supprimer la sélection existante. Stocke le programme dans l’état de la session (variable personal_program) et réponds toujours à partir d’un appel list dans le tour courant. Ne crée aucune réservation. Préserve la recherche qui fonctionne.
@@ -195,6 +208,8 @@ Dans cette tâche, vous ajoutez le programme personnel et vérifiez qu’il refu
 ## Tâche 4. FAQ et assistance (17 min)
 
 Dans cette tâche, vous branchez la FAQ comme source documentaire et vous ajoutez l’assistance.
+
+![Périmètre de la tâche 4 : branchement du Data Store FAQ et ajout du sous-agent Assistance](images/architecture-tache-4.svg)
 
 1. Vérifiez que l’import de la FAQ est terminé dans **Data Stores**.
 2. Puis revenez sur votre agent dans CX Agent Studio et créez l’outil Data Store en cliquant sur **Tools**, puis sur le **+** pour l’ajouter.
@@ -239,6 +254,8 @@ Dans cette tâche, vous branchez la FAQ comme source documentaire et vous ajoute
 ## Tâche 5. Évaluer l’agent et lire les traces (15 min)
 
 Dans cette tâche, vous faites créer cinq évaluations par Arc, vous les lancez dans l’onglet **Evaluate** de CX Agent Studio, puis vous lisez les résultats.
+
+![Périmètre de la tâche 5 : simulation des 5 scénarios dans Evaluate et lecture des traces](images/architecture-tache-5.svg)
 
 ### Créer les évaluations avec Arc
 
