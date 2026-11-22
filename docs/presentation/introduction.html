@@ -1,3 +1,24 @@
+<!--
+  Présentation d’introduction de l’atelier (8 diapositives), publiée avec le guide participant.
+
+  Fichier source : docs/presentation/introduction.html
+  Publication : scripts/build_guides_html.py copie ce dossier dans build/presentation/, et le guide
+  contient un bandeau « Voir la présentation » (constante PRESENTATION, fonction page).
+
+  Structure :
+  - Chaque diapositive est une <section class="slide"> ; l’ordre des sections donne l’ordre d’affichage.
+  - Les notes de l’intervenant sont dans <div class="notes-src"> à l’intérieur de chaque section (touche N).
+  - Le numéro « N / 8 » est écrit en dur dans la barre du haut de chaque diapositive (<span class="num">).
+  - Le lien « ← Guide participant » (<a class="back">) pointe vers ../index.html : il ne fonctionne que dans le site généré.
+  - Les styles reprennent ceux du guide : palette Google, pastilles « kicker », cartes, encadrés.
+
+  Ajouter ou retirer une diapositive :
+  1. Copier une section existante, puis mettre à jour le « N / 8 » de toutes les diapositives.
+  2. Mettre à jour « 8 slides » dans le bandeau .pres de scripts/build_guides_html.py.
+
+  Aperçu : ouvrir le fichier dans Chrome. Flèches pour naviguer, F plein écran, N notes, #N dans l’URL pour aller à une diapositive.
+  Contrôle avant publication : python scripts/build_guides_html.py && python scripts/check_site.py build
+-->
 <!doctype html>
 <html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">

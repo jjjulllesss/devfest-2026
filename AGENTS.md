@@ -52,6 +52,8 @@ This workspace provides several specialized AI skills to assist with development
 
 ## Reprendre le projet DevFest
 
+- **Présentation d’introduction** : `docs/presentation/introduction.html` (diaporama de 8 diapositives, publié avec le guide). Structure et procédure de modification en commentaire en tête du fichier. Après modification, lancer `python scripts/build_guides_html.py && python scripts/check_site.py build`.
+
 La seule application de référence est `concierge-cxas/cxas_app/DevFest_Concierge_atelier_simple/`, déployée dans le projet Jules. Avant de la modifier, lire `docs/guide-participant.md`.
 
 Architecture : Concierge racine, sous-agents Programme et Assistance appelés par transfert (`{@AGENT: ...}`), sans agents-outils, sans callbacks, sans brouillon ni confirmation de ticket. Les anciennes architectures ont été retirées du dépôt ; ne pas les réintroduire.

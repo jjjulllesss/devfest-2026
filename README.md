@@ -25,6 +25,10 @@ Document pédagogique non officiel.
 | `.github/workflows/pages.yml` | Construit et publie le site sur GitHub Pages à chaque push sur `main` |
 | `.agents/` | Compétences de l’assistant de développement (CXAS, SCRAPI) |
 
+## Présentation d’introduction
+
+`docs/presentation/introduction.html` est un diaporama HTML autonome de 8 diapositives sur la place de CX Agent Studio dans l’offre Google. Il est publié avec le guide : le bandeau en haut du guide renvoie vers `presentation/introduction.html` sur le site. Le détail de la structure (ajouter une diapositive, numéros « N / 8 », notes de l’intervenant) est en commentaire en tête du fichier.
+
 ## Tests locaux
 
 Depuis la racine du dépôt :
