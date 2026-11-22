@@ -48,3 +48,11 @@ Le dossier `build/` contient le site à héberger : `index.html` (CSS et JavaScr
 ## Publication sur GitHub Pages
 
 Le workflow `.github/workflows/pages.yml` publie `build/` avec GitHub Actions. Une seule fois, dans **Settings → Pages**, choisir **Source : GitHub Actions**. Chaque push sur `main` qui modifie `docs/` ou le script de génération redéploie le site ; le workflow peut aussi être lancé à la main (**Actions → Publier le guide sur GitHub Pages → Run workflow**).
+
+## Licence
+
+- **Code** (scripts, tests, configuration de l’application) : [Apache License 2.0](LICENSE).
+- **Guide et documentation** (`docs/guide-participant.md`, captures `docs/images/`) : [Creative Commons Attribution 4.0](LICENSE-docs) (CC BY 4.0).
+- **Données de l’événement** : la FAQ (`docs/datastore/faq-devfest-2026.txt`), le catalogue des sessions (`data/agenda.json`) et le brief (`docs/brief-arc-concierge.txt`) concernent le DevFest Paris 2026 et ne sont pas couverts par ces licences. Leurs droits appartiennent à leurs organisateurs ; ne les réutilisez qu’avec leur accord.
+
+Document pédagogique non officiel, sans lien avec Google ni avec l’organisateur du DevFest Paris.
