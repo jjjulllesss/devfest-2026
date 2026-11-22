@@ -25,6 +25,7 @@ import markdown
 ROOT = Path(__file__).resolve().parents[1]
 
 REPO_URL = "https://github.com/jjjulllesss/devfest-2026"
+FEEDBACK_URL = "https://openfeedback.io/sBSRvQdfgZv87UJ1Zr8p/2026-11-27/df26-006"
 
 # (source docs/<slug>.md, libellé, titre de la page, fichier HTML produit)
 GUIDES = [
@@ -122,8 +123,22 @@ blockquote.prompt p:first-of-type{border-top:0}
 .checkpoint>.cp-title:before{content:"✓";display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--green-dark);color:#fff;font-size:.75rem}
 .checkpoint .tablewrap{margin:0;border:0;border-radius:0}
 .checklist li{list-style:none;margin-left:-1.2em}
-/* Pied de page */
-footer{margin-top:3.5em;padding-top:1.2em;border-top:1px solid var(--border);color:var(--text2);font-size:.82rem}
+/* Section Contact et feedback, en bas de page */
+.contact{margin:1.2em 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:16px}
+.carte{display:flex;align-items:center;gap:20px;padding:22px 24px;background:var(--bg2);border:1px solid var(--border);border-radius:8px}
+.carte.avis{border-left:4px solid var(--blue)}
+.carte .lab{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text2);font-weight:500;margin-bottom:2px}
+.carte .nom{font-size:1.15rem;font-weight:500;color:var(--text);line-height:1.35}
+.carte .poste{font-size:.9rem;color:var(--text2);margin-top:2px}
+.carte .texte{font-size:.92rem;color:var(--text2);margin:6px 0 0;line-height:1.5}
+.carte .photo{width:84px;height:84px;flex:none;margin:0;border:0;border-radius:50%;object-fit:cover}
+.carte .qr{flex:none;display:block}
+.carte .qr img{width:150px;height:150px;margin:0;border:1px solid var(--border);border-radius:8px;background:#fff}
+.carte .liens{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.carte .liens a{font-size:.85rem;border:1px solid var(--border);border-radius:14px;padding:3px 12px;background:#fff}
+.carte .btn{display:inline-block;margin-top:12px;padding:7px 18px;border-radius:16px;background:var(--blue);color:#fff;font-size:.88rem;font-weight:500}
+main .carte .btn{color:#fff}.carte .btn:hover{background:var(--blue-dark);text-decoration:none}
+@media(max-width:700px){.contact{grid-template-columns:1fr}.carte.avis{flex-wrap:wrap}}
 /* Responsive / impression */
 @media(max-width:960px){.sidebar{display:none}.layout{padding:0 18px}main{padding-top:24px}main h1{font-size:1.8rem}.topbar{padding:0 14px}.brand span.long{display:none}}
 @media(max-width:600px){.brand b{display:none}.where .pos span{max-width:42vw}.where{gap:10px}}
@@ -341,7 +356,27 @@ def page(slug: str, title: str, body: str) -> str:
   <aside class="sidebar"><h4>Sur cette page</h4><div id="toc"></div></aside>
   <main>
 {body}
-    <footer>Document pédagogique de l’atelier DevFest Paris 2026, non officiel. Mise en page inspirée de la documentation Google Cloud. Sources : <a href="{REPO_URL}">{REPO_URL.removeprefix("https://")}</a>.</footer>
+    <h2 id="contact" data-toc="Contact et feedback">Contact et feedback</h2>
+    <div class="contact">
+      <section class="carte">
+        <img class="photo" src="images/auteur.jpg" alt="Jules Mermet-Husson" width="84" height="84">
+        <div>
+          <div class="lab">Atelier conçu par</div>
+          <div class="nom">Jules Mermet-Husson</div>
+          <div class="poste">Senior Cloud &amp; AI Architect, <a href="https://www.valtech.com/">Valtech</a></div>
+          <div class="liens"><a href="https://www.linkedin.com/in/jmermethusson/">LinkedIn</a><a href="https://jules.sh">jules.sh</a></div>
+        </div>
+      </section>
+      <section class="carte avis">
+        <a class="qr" href="{FEEDBACK_URL}"><img src="images/qr-feedback.png" alt="QR code : évaluer l’atelier sur OpenFeedback" width="150" height="150"></a>
+        <div>
+          <div class="lab">Votre avis</div>
+          <div class="nom">Évaluez l’atelier</div>
+          <p class="texte">Merci d’avoir suivi l’atelier. Scannez le QR code ou ouvrez le lien : votre retour m’aide à l’améliorer.</p>
+          <a class="btn" href="{FEEDBACK_URL}">Donner mon avis</a>
+        </div>
+      </section>
+    </div>
   </main>
 </div>
 <script>{JS}</script>
