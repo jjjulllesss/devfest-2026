@@ -27,7 +27,7 @@ Document pédagogique non officiel.
 
 ## Présentation d’introduction
 
-`docs/presentation/introduction.html` est un diaporama HTML autonome de 8 diapositives sur la place de CX Agent Studio dans l’offre Google. Il est publié avec le guide : le bandeau en haut du guide renvoie vers `presentation/introduction.html` sur le site. Le détail de la structure (ajouter une diapositive, numéros « N / 8 », notes de l’intervenant) est en commentaire en tête du fichier.
+`docs/presentation/introduction.html` est un diaporama HTML autonome de 8 diapositives sur la place de CX Agent Studio dans l’offre Google. Il est publié avec le guide : le lien « Voir la présentation » de l’en-tête renvoie vers `presentation/introduction.html` sur le site. Le détail de la structure (ajouter une diapositive, numéros « N / 8 », notes de l’intervenant) est en commentaire en tête du fichier.
 
 ## Tests locaux
 
@@ -47,7 +47,7 @@ python scripts/build_guides_html.py
 python scripts/check_site.py
 ```
 
-Le dossier `build/` contient le site à héberger : `index.html` (CSS et JavaScript intégrés), la présentation d’introduction (`presentation/introduction.html`, liée en haut du guide), les captures (`images/`) et les fichiers à télécharger (`brief-arc-concierge.txt`, qui inclut le contrat de l’API, et `datastore/faq-devfest-2026.txt`). Seules les polices Roboto sont chargées en ligne ; hors connexion, une police système les remplace.
+Le dossier `build/` contient le site à héberger : `index.html` (CSS et JavaScript intégrés), la présentation d’introduction (`presentation/introduction.html`, liée depuis l’en-tête du guide), les captures (`images/`) et les fichiers à télécharger (`brief-arc-concierge.txt`, qui inclut le contrat de l’API, et `datastore/faq-devfest-2026.txt`). Seules les polices Roboto sont chargées en ligne ; hors connexion, une police système les remplace.
 
 ## Publication sur GitHub Pages
 

@@ -52,12 +52,17 @@ html{scroll-behavior:smooth;scroll-padding-top:76px}
 body{margin:0;font-family:var(--font);color:var(--text);background:#fff;line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased}
 /* Bandeau */
 .topbar{position:sticky;top:0;z-index:20;height:56px;display:flex;align-items:center;gap:16px;padding:0 24px;background:#fff;border-bottom:1px solid var(--border)}
-.brand{display:flex;align-items:center;gap:12px;font-size:1.125rem;color:var(--text2);text-decoration:none;font-weight:500}
-.dots{display:inline-flex;gap:3px}
+.ident{display:flex;align-items:baseline;min-width:0}
+.brand{display:flex;align-items:baseline;gap:12px;font-size:1.125rem;line-height:1;color:var(--text2);text-decoration:none;font-weight:500}
+.dots{display:inline-flex;align-self:center;gap:3px}
 .dots i{width:9px;height:9px;border-radius:50%;display:block}
 .dots i:nth-child(1){background:var(--blue)}.dots i:nth-child(2){background:var(--red)}
 .dots i:nth-child(3){background:var(--yellow)}.dots i:nth-child(4){background:var(--green)}
+.name{display:flex;align-items:baseline;gap:12px}
 .brand b{color:var(--text);font-weight:500}
+.sep{align-self:center;width:1px;height:16px;flex:none;background:var(--border);margin:0 14px}
+.slides{color:var(--text2);text-decoration:none;font-size:.85rem;line-height:1;font-weight:500;white-space:nowrap}
+.slides:hover{color:var(--blue)}
 /* Où j’en suis : position courante + barre de progression */
 .where{margin-left:auto;display:flex;align-items:center;gap:14px;min-width:0}
 .where .pos{display:flex;flex-direction:column;align-items:flex-end;min-width:0;line-height:1.25}
@@ -126,11 +131,18 @@ blockquote.prompt p:first-of-type{border-top:0}
 .checkpoint>.cp-title:before{content:"✓";display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--green-dark);color:#fff;font-size:.75rem}
 .checkpoint .tablewrap{margin:0;border:0;border-radius:0}
 .checklist li{list-style:none;margin-left:-1.2em}
-/* Lien vers la présentation, au-dessus du guide */
-.pres{display:flex;align-items:center;gap:14px;margin:0 0 22px;padding:10px 18px;background:var(--bg2);border:1px solid var(--border);border-left:4px solid var(--blue);border-radius:8px;font-size:.95rem;color:var(--text2)}
-.pres .ic{flex:none;width:32px;height:32px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center}
-.pres .ic svg{display:block;margin-left:1px}
-.pres span{flex:1}.pres a{font-weight:500;white-space:nowrap}
+/* Fin de l’atelier : pastilles du logo, puis un jet de confettis aux quatre couleurs */
+h2.finale .mark{display:inline-flex;gap:4px}
+h2.finale .mark i{width:9px;height:9px;border-radius:50%;display:block}
+h2.finale .mark i:nth-child(1){background:var(--blue)}
+h2.finale .mark i:nth-child(2){background:var(--red)}
+h2.finale .mark i:nth-child(3){background:var(--yellow)}
+h2.finale .mark i:nth-child(4){background:var(--green)}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:30}
+.confetti i{position:fixed;border-radius:50%;opacity:0;animation:burst 1.5s cubic-bezier(.15,.7,.3,1) forwards}
+.confetti i.sq{border-radius:2px}
+@keyframes burst{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.7)}}
+@media(prefers-reduced-motion:reduce){.confetti{display:none}}
 /* Section Contact et feedback, en bas de page */
 .contact{margin:1.2em 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:16px}
 .carte{display:flex;align-items:center;gap:20px;padding:22px 24px;background:var(--bg2);border:1px solid var(--border);border-radius:8px}
@@ -150,7 +162,7 @@ main .carte .btn{color:#fff}.carte .btn:hover{background:var(--blue-dark);text-d
 /* Responsive / impression */
 @media(max-width:960px){.sidebar{display:none}.layout{padding:0 18px}main{padding-top:24px}main h1{font-size:1.8rem}.topbar{padding:0 14px}.brand span.long{display:none}}
 @media(max-width:600px){.brand b{display:none}.where .pos span{max-width:42vw}.where{gap:10px}}
-@media print{.topbar,.sidebar,.copy,.pres{display:none}.layout{display:block;padding:0}main{max-width:none}main h2{break-after:avoid}.checkpoint,blockquote,pre,table{break-inside:avoid}}
+@media print{.topbar,.sidebar,.copy,.confetti{display:none}.layout{display:block;padding:0}main{max-width:none}main h2{break-after:avoid}.checkpoint,blockquote,pre,table{break-inside:avoid}}
 """
 
 JS = """
@@ -202,9 +214,10 @@ JS = """
     // progression de lecture
     var p=Math.max(0,Math.min(100,Math.round(y/maxScroll*100)));
     bar.style.width=p+'%';pct.textContent=p+' %';
-    // section courante
-    var ci=-1,c2=-1;
-    items.forEach(function(it,k){if(it.top<=anchor){ci=k;if(it.h.tagName==='H2')c2=k}});
+    // section courante. Une section en fin de page, trop courte pour que son titre
+    // atteigne la ligne de lecture, est tout de même marquée une fois le bas atteint.
+    var ci=-1,c2=-1,limit=maxScroll+ANCHOR;
+    items.forEach(function(it,k){if(Math.min(it.top,limit)<=anchor){ci=k;if(it.h.tagName==='H2')c2=k}});
     var cur=ci>=0?items[ci]:null,cur2=c2>=0?items[c2]:null;
     // étape courante : dernier pas numéroté démarré dans la section en cours
     var step=null;
@@ -266,6 +279,31 @@ JS = """
   [].slice.call(document.querySelectorAll('blockquote.prompt > p')).forEach(function(p){
     addCopy(p,function(){var c=p.cloneNode(true);var x=c.querySelector('.copy');if(x)c.removeChild(x);return c.innerText.trim()});
   });
+
+  // Confettis une seule fois, quand la section Félicitations entre dans l’écran
+  var finale=document.querySelector('main h2.finale');
+  if(finale && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
+    var played=false;
+    var io=new IntersectionObserver(function(entries){
+      if(played || !entries.some(function(e){return e.isIntersecting})) return;
+      played=true; io.disconnect();
+      var r=finale.getBoundingClientRect();
+      var layer=document.createElement('div');
+      layer.className='confetti'; layer.setAttribute('aria-hidden','true');
+      var colors=['#1a73e8','#ea4335','#fbbc04','#34a853'];
+      for(var n=0;n<32;n++){
+        var p=document.createElement('i');
+        if(n%4===0) p.className='sq';
+        var size=7+Math.round(Math.random()*4);
+        var x=Math.round((Math.random()-0.5)*520), y=Math.round(-180+Math.random()*150);
+        p.style.cssText='left:'+Math.round(r.left+20)+'px;top:'+Math.round(r.top+r.height/2)+'px;width:'+size+'px;height:'+size+'px;background:'+colors[n%4]+';--x:'+x+'px;--y:'+y+'px;--r:'+Math.round(Math.random()*240-120)+'deg;animation-delay:'+(Math.random()*0.12).toFixed(2)+'s';
+        layer.appendChild(p);
+      }
+      document.body.appendChild(layer);
+      setTimeout(function(){layer.remove()},1800);
+    },{threshold:0.6});
+    io.observe(finale);
+  }
 })();
 """
 
@@ -322,6 +360,9 @@ def convert(md_text: str) -> str:
         else:
             toc_label = plain.split(" : ")[0]
         text += chip
+        if toc_label == "Félicitations":
+            extra += ' class="finale"'
+            text += '<span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>'
         return f'<h2{attrs} data-toc="{html.escape(toc_label, quote=True)}"{extra}>{text}</h2>'
 
     body = re.sub(r"<h2([^>]*)>(.*?)</h2>", h2, body, flags=re.S)
@@ -356,14 +397,17 @@ def page(slug: str, title: str, body: str) -> str:
 <style>{CSS}</style></head>
 <body>
 <header class="topbar">
-  <a class="brand" href="./"><span class="dots"><i></i><i></i><i></i><i></i></span><b>DevFest Paris 2026</b><span class="long">Atelier CX Agent Studio</span></a>
+  <div class="ident">
+    <a class="brand" href="./"><span class="dots"><i></i><i></i><i></i><i></i></span><span class="name"><b>DevFest Paris 2026</b><span class="long">Atelier CX Agent Studio</span></span></a>
+    <span class="sep" aria-hidden="true"></span>
+    <a class="slides" href="{PRESENTATION}">Voir la présentation</a>
+  </div>
   <div class="where" aria-live="polite"><div class="pos"><b id="pos-main">Introduction</b><span id="pos-sub"></span></div><div class="pct" id="pct">0 %</div></div>
   <div class="progress" id="progress" aria-hidden="true"><i class="bar" id="bar"></i></div>
 </header>
 <div class="layout">
   <aside class="sidebar"><h4>Sur cette page</h4><div id="toc"></div></aside>
   <main>
-    <div class="pres"><i class="ic"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z" fill="#fff"/></svg></i><span>Une introduction de 8 slides présente CX Agent Studio et sa place dans l’offre Google.</span><a href="{PRESENTATION}">Voir la présentation &rarr;</a></div>
 {body}
     <h2 id="contact" data-toc="Contact et feedback">Contact et feedback</h2>
     <div class="contact">

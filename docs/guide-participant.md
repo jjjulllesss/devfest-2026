@@ -339,7 +339,75 @@ Vous avez construit un concierge qui :
 
 ---
 
-## Pour aller plus loin : gérer vos agents avec CXAS SCRAPI
+## Pour aller plus loin
+
+Si vous avez terminé avant la clôture, trois pistes prolongent l’atelier, classées par ordre de priorité :
+
+1. **Analytics** : suivre l’activité de votre agent dans Monitor.
+2. **Voix** : parler à votre concierge avec le modèle vocal Composite V2.
+3. **CXAS SCRAPI** : gérer vos agents par programmation.
+
+### Analyser vos conversations avec Monitor
+
+Durée estimée : 5 à 10 minutes.
+
+Monitor est le tableau de bord de CX Agent Studio : il résume l’activité de votre application. Vos conversations de test des tâches précédentes y sont déjà comptées.
+
+Prérequis : la journalisation des conversations doit être activée dans les paramètres de l’application. C’est l’option **Enable conversation logging** proposée à la création de l’application (tâche 2).
+
+1. En haut du builder, cliquez sur **Monitor**.
+2. Dans l’onglet **Agent outcome**, parcourez les métriques de votre application.
+
+![Monitor : onglet Agent outcome avec les métriques opérationnelles de l’application](images/etape-16.png)
+
+3. Pour relire le détail des conversations, ouvrez **Sessions** dans le menu de gauche.
+
+Pour vous guider dans la lecture :
+
+- Combien de sessions correspondent à vos tests ? Retrouvez-les dans **Sessions**.
+- Descendez dans la page pour lire la latence : la latence globale (**End to End latency**) et la latence de chaque outil (**Tool latency**). Quel outil est le plus lent ?
+- Repérez **Conversation outcome** : il indique si les conversations sont résolues ou non. Combien de vos conversations de test sont résolues ?
+
+### Tester le mode vocal
+
+Durée estimée : 5 à 10 minutes.
+
+Votre concierge peut aussi répondre à l’oral. Il suffit de lui donner un modèle optimisé pour la voix : `gemini-3.5-flash`, utilisé pendant l’atelier, est un modèle texte.
+
+> **Important :** utilisez des écouteurs ou un casque pour ne pas déranger vos voisins.
+
+1. Ouvrez les paramètres de l’application (icône d’engrenage), puis **Basic**, **Interactions**. Dans **Model**, sélectionnez `gemini-composite-v2`, dans la rubrique **Text + voice optimized**, puis cliquez sur **Save**.
+
+![Paramètres de l’application : sélection du modèle gemini-composite-v2](images/etape-17.png)
+
+2. Toujours dans les paramètres, vérifiez que **Language controls** indique le français (`fr-FR`) comme langue par défaut.
+3. Ouvrez une nouvelle conversation de test dans l’aperçu, cliquez sur le micro (**Start recording**) et autorisez l’accès au micro dans votre navigateur.
+
+![Aperçu de l’agent : bouton micro Start recording](images/etape-18.png)
+
+4. Dites à voix haute, en attendant chaque réponse :
+
+> Trouve l’atelier de Jules.
+>
+> Ajoute-le à mon programme.
+>
+> Où et quand a lieu le DevFest ?
+>
+> Mon projet GCP affiche une erreur de facturation, crée un ticket.
+
+5. Jouez avec les voix : dans les paramètres de l’application, rubrique **Behavior**, ouvrez **Voice** et choisissez une autre voix, masculine ou féminine selon votre préférence. Enregistrez, puis relancez un test au micro pour comparer.
+
+**Je vérifie**
+
+| Je fais | Je dois voir | Où regarder |
+|---|---|---|
+| Je dis les quatre phrases | L’agent répond en français, à l’oral | Votre casque |
+| Je demande l’atelier de Jules | Les mêmes appels d’outils qu’à l’écrit | Trace : `search_sessions`, puis `update_personal_program` |
+| Je demande un ticket | La référence `TKT-…` est lue distinctement | Réponse parlée comparée à la trace de `create_support_ticket` |
+
+Notez ce qui diffère du texte : le temps de réponse, les noms mal compris, les phrases trop longues à écouter. Pour revenir au texte, rétablissez `gemini-3.5-flash` dans les paramètres.
+
+### Gérer vos agents avec CXAS SCRAPI
 
 La console CX Agent Studio n’est pas le seul moyen de créer et de maintenir vos agents. CXAS SCRAPI est une bibliothèque Python open source, accompagnée d’une interface en ligne de commande, qui permet de gérer les ressources CX Agent Studio par programmation.
 
@@ -352,7 +420,7 @@ SCRAPI permet de prolonger le travail réalisé pendant cet atelier avec un proc
 
 Documentation : [CXAS SCRAPI](https://googlecloudplatform.github.io/cxas-scrapi/latest/).
 
-### Exercice facultatif : explorer et analyser votre application
+**Exercice facultatif : explorer et analyser votre application**
 
 Durée estimée : 10 à 15 minutes.
 
@@ -371,6 +439,12 @@ Installez SCRAPI, puis configurez les identifiants par défaut de l’applicatio
 ```bash
 pip install cxas-scrapi
 gcloud auth application-default login
+```
+
+Si SCRAPI signale plus tard une erreur de quota ou de projet, définissez le projet de quota des identifiants, puis relancez la commande :
+
+```bash
+gcloud auth application-default set-quota-project YOUR_PROJECT_ID
 ```
 
 #### 2. Retrouver et télécharger votre application
