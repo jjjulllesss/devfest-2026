@@ -57,3 +57,5 @@ La seule application de référence est `concierge-cxas/cxas_app/DevFest_Concier
 Architecture : Concierge racine, sous-agents Programme et Assistance appelés par transfert (`{@AGENT: ...}`), sans agents-outils, sans callbacks, sans brouillon ni confirmation de ticket. Les anciennes architectures ont été retirées du dépôt ; ne pas les réintroduire.
 
 Les participants construisent l’application avec Arc dans CX Agent Studio. SCRAPI est réservé à la maintenance et aux tests locaux.
+
+Schémas d’architecture du guide : `docs/images/architecture*.svg` sont générés par `scripts/build_architecture_diagrams.py` (ne pas éditer les SVG à la main). Régénérer avec `uv run --no-project --with resvg-py python3 scripts/build_architecture_diagrams.py`, puis reconstruire le site avec `python scripts/build_guides_html.py`.
