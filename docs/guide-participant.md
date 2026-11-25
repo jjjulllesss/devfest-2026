@@ -1,4 +1,4 @@
-# Construire le concierge DevFest en direct avec Google CX Agent Studio
+# Construire le concierge DevFest avec Google CX Agent Studio
 
 Dans cet atelier, vous allez construire un assistant qui répond aux questions des participants du DevFest Paris !
 
