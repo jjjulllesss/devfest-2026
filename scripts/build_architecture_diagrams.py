@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Génère les schémas d'architecture du guide participant (docs/guide-participant.md).
 
-Produit docs/images/architecture.svg (vue complète) et docs/images/architecture-tache-{2,3,4,5}.svg
+Produit docs/images/architecture.svg (vue complète) et docs/images/architecture-tache-{1,2,3,4}.svg
 (périmètre de chaque tâche : actif, déjà en place, à venir). Des aperçus PNG haute résolution
 sont écrits dans .pytest_cache/architecture-previews/ (ignoré par git) pour contrôle visuel.
 
@@ -195,7 +195,7 @@ def focus_halo(w: float, h: float, rx: float = 5, color: str = "#d2e3fc") -> str
 
 def build_diagram(mode: str = "full") -> str:
     """
-    mode in {"full", "tache2", "tache3", "tache4", "tache5"}
+    mode in {"full", "tache1", "tache2", "tache3", "tache4"}
     Uses a crisp 1040px wide canvas so text renders large and readable inside the 860px HTML column.
     """
     is_task = mode != "full"
@@ -211,7 +211,7 @@ def build_diagram(mode: str = "full") -> str:
             "assistance", "gcs", "datastore", "cloud_run",
             "e_user", "e_prog", "e_assist", "e_state_prog", "e_state_tkt", "e_faq", "e_import", "e_index", "e_api"
         ]}
-    elif mode == "tache2":
+    elif mode == "tache1":
         st = {
             "user": "active",
             "faq_file": "active",
@@ -238,7 +238,7 @@ def build_diagram(mode: str = "full") -> str:
             "e_index": "active",
             "e_api": "active",
         }
-    elif mode == "tache3":
+    elif mode == "tache2":
         st = {
             "user": "done",
             "faq_file": "done",
@@ -265,7 +265,7 @@ def build_diagram(mode: str = "full") -> str:
             "e_index": "done",
             "e_api": "active",  # get_session called before add!
         }
-    elif mode == "tache4":
+    elif mode == "tache3":
         st = {
             "user": "done",
             "faq_file": "done",
@@ -292,7 +292,7 @@ def build_diagram(mode: str = "full") -> str:
             "e_index": "done",
             "e_api": "done",
         }
-    elif mode == "tache5":
+    elif mode == "tache4":
         st = {
             "user": "active",
             "faq_file": "done",
@@ -380,10 +380,10 @@ def build_diagram(mode: str = "full") -> str:
     # Task Spotlight top bar
     if is_task:
         task_banners = {
-            "tache2": ("Tâche 2", "Application Concierge, import FAQ et recherche via l’API publique"),
-            "tache3": ("Tâche 3", "Outil Python update_personal_program et état personal_program"),
-            "tache4": ("Tâche 4", "Branchement du Data Store FAQ et ajout du sous-agent Assistance"),
-            "tache5": ("Tâche 5", "Simulation des 5 scénarios dans Evaluate et lecture des traces"),
+            "tache1": ("Tâche 1", "Application Concierge, import FAQ et recherche via l’API publique"),
+            "tache2": ("Tâche 2", "Outil Python update_personal_program et état personal_program"),
+            "tache3": ("Tâche 3", "Branchement du Data Store FAQ et ajout du sous-agent Assistance"),
+            "tache4": ("Tâche 4", "Simulation des 5 scénarios dans Evaluate et lecture des traces"),
         }
         t_badge, t_desc = task_banners[mode]
         parts.extend([
@@ -405,8 +405,8 @@ def build_diagram(mode: str = "full") -> str:
 
     # ---------------- COL 1: PARTICIPANT & FICHIER FAQ (x=18..150) ----------------
     u_stroke, u_sw, u_halo = card_stroke("user")
-    user_sub1 = "Onglet Evaluate (5 tests)" if mode == "tache5" else "Aperçu & Evaluate"
-    user_sub2 = "Simulation & traces" if mode == "tache5" else "Console CX Agent Studio"
+    user_sub1 = "Onglet Evaluate (5 tests)" if mode == "tache4" else "Aperçu & Evaluate"
+    user_sub2 = "Simulation & traces" if mode == "tache4" else "Console CX Agent Studio"
     parts.extend([
         f'<g transform="translate(18,142)"{g_cls("user")}>',
         f'  {focus_halo(132, 114, 6, u_halo) if u_halo else ""}',
@@ -617,15 +617,15 @@ def build_diagram(mode: str = "full") -> str:
     # 7. Fichier FAQ -> Bucket FAQ -> Data Store FAQ
     parts.append(f'<line x1="150" y1="441" x2="202" y2="441" {grey_edge_attrs("e_import")} marker-end="{grey_marker("e_import")}"/>')
     parts.append(f'<line x1="416" y1="441" x2="472" y2="441" {grey_edge_attrs("e_index")} marker-end="{grey_marker("e_index")}"/>')
-    idx_lbl = "Import lancé" if mode == "tache2" else "Indexation"
-    idx_fg = "#174ea6" if mode == "tache2" else "#5f6368"
-    idx_bd = "#aecbfa" if mode == "tache2" else "#dadce0"
-    parts.append(pill_label(444, 421, idx_lbl, fg=idx_fg, border=idx_bd, w=72 if mode == "tache2" else 64, state=st["e_index"]))
+    idx_lbl = "Import lancé" if mode == "tache1" else "Indexation"
+    idx_fg = "#174ea6" if mode == "tache1" else "#5f6368"
+    idx_bd = "#aecbfa" if mode == "tache1" else "#dadce0"
+    parts.append(pill_label(444, 421, idx_lbl, fg=idx_fg, border=idx_bd, w=72 if mode == "tache1" else 64, state=st["e_index"]))
 
     # 8. Programme -> Public Cloud Run across Internet
     parts.append(f'<line x1="710" y1="180" x2="840" y2="180" {blue_edge_attrs("e_api", 2.2)} marker-end="{blue_marker("e_api")}"/>')
-    api_l1 = "get_session" if mode == "tache3" else "HTTPS GET"
-    api_l2 = "vérifie horaires" if mode == "tache3" else "public · sans clé"
+    api_l1 = "get_session" if mode == "tache2" else "HTTPS GET"
+    api_l2 = "vérifie horaires" if mode == "tache2" else "public · sans clé"
     parts.append(pill_2lines(785, 148, api_l1, api_l2, w=86, state=st["e_api"]))
 
     # Footer legend ONLY on the full reference diagram (keeps per-task spotlights sleek!)
@@ -652,10 +652,10 @@ def main() -> None:
     PREVIEW_DIR.mkdir(parents=True, exist_ok=True)
     targets = [
         ("architecture", "full"),
+        ("architecture-tache-1", "tache1"),
         ("architecture-tache-2", "tache2"),
         ("architecture-tache-3", "tache3"),
         ("architecture-tache-4", "tache4"),
-        ("architecture-tache-5", "tache5"),
     ]
     for filename, mode in targets:
         svg = build_diagram(mode)

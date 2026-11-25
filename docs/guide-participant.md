@@ -42,21 +42,21 @@ Vérifiez ces points avant de commencer la création de votre agent :
 
 **Fichiers à télécharger**
 
-- [`faq-devfest-2026.txt`](datastore/faq-devfest-2026.txt) : la FAQ de l’événement, à importer dans le Data Store (tâche 2).
-- [`brief-arc-concierge.txt`](brief-arc-concierge.txt) : le brief de l’agent, qui inclut le contrat de l’API des sessions, à coller dans Arc (tâche 2).
+- [`faq-devfest-2026.txt`](datastore/faq-devfest-2026.txt) : la FAQ de l’événement, à importer dans le Data Store (tâche 1).
+- [`brief-arc-concierge.txt`](brief-arc-concierge.txt) : le brief de l’agent, qui inclut le contrat de l’API des sessions, à coller dans Arc (tâche 1).
 
 **Important :** Pour l’ensemble de ce workshop, nous allons utiliser la région `eu`. La valeur proposée par défaut est `us`, n’oubliez donc pas de la modifier.
 
 ### Déroulé
 
-| Minutes | Tâche | Résultat attendu |
+| Minutes | Étape | Résultat attendu |
 |---|---|---|
 | 0–5 | Avant de commencer | Accès vérifiés |
 | 5–15 | **Section 0** : regarder l’agent de référence | Vous savez où regarder pour valider un agent |
-| 15–33 | **Tâche 2** : créer l’application et la recherche | Une vraie session trouvée via l’API |
-| 33–48 | **Tâche 3** : programme sans chevauchement | Ajout réussi, conflit refusé |
-| 48–65 | **Tâche 4** : FAQ et assistance | Réponse issue de la FAQ, ticket créé sans doublon |
-| 65–80 | **Tâche 5** : tester et lire les traces | Cinq scénarios notés |
+| 15–33 | **Tâche 1** : créer l’application et la recherche | Une vraie session trouvée via l’API |
+| 33–48 | **Tâche 2** : programme sans chevauchement | Ajout réussi, conflit refusé |
+| 48–65 | **Tâche 3** : FAQ et assistance | Réponse issue de la FAQ, ticket créé sans doublon |
+| 65–80 | **Tâche 4** : tester et lire les traces | Cinq scénarios notés |
 | 80–90 | Clôture | Bilan |
 
 Si une étape bloque plus de deux minutes, signalez-le à l’animateur et passez à la suite.
@@ -65,9 +65,9 @@ Si une étape bloque plus de deux minutes, signalez-le à l’animateur et passe
 
 ## Section 0. Regarder l’agent de référence (10 min)
 
-À cette étape, l’animateur montre le concierge terminé. Vous repérez les éléments à vérifier plus tard dans votre propre agent.
+> **Important :** Regardez **l’écran de l’animateur**, pas votre ordinateur. Pendant ces dix minutes, vous n’avez **aucune action** à faire sur votre portable : n’ouvrez pas la console Google Cloud ni CX Agent Studio. Suivez la démonstration et repérez les éléments ci-dessous — vous les vérifierez dans votre propre agent à partir de la **tâche 1**.
 
-**Important :** vous n’avez rien à faire sur votre ordinateur pendant cette section. Ne ouvrez pas encore CX Agent Studio : regardez la démonstration à l’écran et suivez les repères ci-dessous.
+À cette étape, l’animateur montre le concierge terminé.
 
 Repérez ces quatre éléments sur l’écran de l’animateur :
 
@@ -92,11 +92,11 @@ Ensuite, lisez l’architecture :
 
 ---
 
-## Tâche 2. Créer l’application et la recherche (18 min)
+## Tâche 1. Créer l’application et la recherche (18 min)
 
 Dans cette tâche, vous créez votre application, lancez l’import de la FAQ en arrière-plan, puis faites construire par Arc le premier jalon : la recherche de sessions.
 
-![Périmètre de la tâche 2 : création de l’application, import FAQ et recherche via l’API publique](images/architecture-tache-2.svg)
+![Périmètre de la tâche 1 : création de l’application, import FAQ et recherche via l’API publique](images/architecture-tache-1.svg)
 
 ### Créer l’application
 
@@ -171,11 +171,11 @@ Dans l’aperçu, envoyez :
 
 ---
 
-## Tâche 3. Programme sans chevauchement (15 min)
+## Tâche 2. Programme sans chevauchement (15 min)
 
 Dans cette tâche, vous ajoutez le programme personnel et vérifiez qu’il refuse un chevauchement.
 
-![Périmètre de la tâche 3 : outil Python update_personal_program et état personal_program](images/architecture-tache-3.svg)
+![Périmètre de la tâche 2 : outil Python update_personal_program et état personal_program](images/architecture-tache-2.svg)
 
 1. Dans la même conversation avec Arc, envoyez :
 
@@ -207,11 +207,11 @@ Dans cette tâche, vous ajoutez le programme personnel et vérifiez qu’il refu
 
 ---
 
-## Tâche 4. FAQ et assistance (17 min)
+## Tâche 3. FAQ et assistance (17 min)
 
 Dans cette tâche, vous branchez la FAQ comme source documentaire et vous ajoutez l’assistance.
 
-![Périmètre de la tâche 4 : branchement du Data Store FAQ et ajout du sous-agent Assistance](images/architecture-tache-4.svg)
+![Périmètre de la tâche 3 : branchement du Data Store FAQ et ajout du sous-agent Assistance](images/architecture-tache-3.svg)
 
 1. Vérifiez que l’import de la FAQ est terminé dans **Data Stores**.
 2. Puis revenez sur votre agent dans CX Agent Studio et créez l’outil Data Store en cliquant sur **Tools**, puis sur le **+** pour l’ajouter.
@@ -253,11 +253,11 @@ Dans cette tâche, vous branchez la FAQ comme source documentaire et vous ajoute
 
 ---
 
-## Tâche 5. Évaluer l’agent et lire les traces (15 min)
+## Tâche 4. Évaluer l’agent et lire les traces (15 min)
 
 Dans cette tâche, vous faites créer cinq évaluations par Arc, vous les lancez dans l’onglet **Evaluate** de CX Agent Studio, puis vous lisez les résultats.
 
-![Périmètre de la tâche 5 : simulation des 5 scénarios dans Evaluate et lecture des traces](images/architecture-tache-5.svg)
+![Périmètre de la tâche 4 : simulation des 5 scénarios dans Evaluate et lecture des traces](images/architecture-tache-4.svg)
 
 ### Créer les évaluations avec Arc
 
@@ -355,7 +355,7 @@ Durée estimée : 5 à 10 minutes.
 
 Monitor est le tableau de bord de CX Agent Studio : il résume l’activité de votre application. Vos conversations de test des tâches précédentes y sont déjà comptées.
 
-Prérequis : la journalisation des conversations doit être activée dans les paramètres de l’application. C’est l’option **Enable conversation logging** proposée à la création de l’application (tâche 2).
+Prérequis : la journalisation des conversations doit être activée dans les paramètres de l’application. C’est l’option **Enable conversation logging** proposée à la création de l’application (tâche 1).
 
 1. En haut du builder, cliquez sur **Monitor**.
 2. Dans l’onglet **Agent outcome**, parcourez les métriques de votre application.
