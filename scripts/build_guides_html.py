@@ -338,7 +338,7 @@ def convert(md_text: str) -> str:
         flags=re.S,
     )
 
-    # Titres h2 : pastille « Tâche N » et durée en puce
+    # Titres h2 : pastille « Tâche N » / « Section N » et durée en puce
     def h2(match: re.Match) -> str:
         attrs, text = match.group(1), match.group(2)
         plain = html.unescape(re.sub(r"<[^>]+>", "", text))
@@ -350,13 +350,15 @@ def convert(md_text: str) -> str:
         plain = re.sub(r"\s*\(\d+ min\)\s*$", "", plain)
         extra = ""
         task = re.match(r"(Tâche (\d+))\.\s*(.*)", text)
-        if task:
-            toc_label = f"{task.group(2)}. {html.unescape(re.sub(r'<[^>]+>', '', task.group(3)))}"
+        section = re.match(r"(Section (\d+))\.\s*(.*)", text) if not task else None
+        step = task or section
+        if step:
+            toc_label = f"{step.group(2)}. {html.unescape(re.sub(r'<[^>]+>', '', step.group(3)))}"
             extra = (
-                f' data-task="{task.group(1)}"'
-                f' data-title="{html.escape(html.unescape(re.sub(r"<[^>]+>", "", task.group(3))), quote=True)}"'
+                f' data-task="{step.group(1)}"'
+                f' data-title="{html.escape(html.unescape(re.sub(r"<[^>]+>", "", step.group(3))), quote=True)}"'
             )
-            text = f'<span class="task">{task.group(1)}</span><span>{task.group(3)}</span>'
+            text = f'<span class="task">{step.group(1)}</span><span>{step.group(3)}</span>'
         else:
             toc_label = plain.split(" : ")[0]
         text += chip

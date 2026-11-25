@@ -15,7 +15,7 @@ Vous repartez avec un agent déployé sur votre projet GCP et un modèle que vou
 À la fin de l’atelier, vous saurez :
 
 - lire la structure d’un agent : agents, instructions, outils, variables d’état ;
-- construire un agent avec Arc à partir d’un brief, en validant son plan ;
+- construire un agent avec Arc à partir d’un brief, en suivant ce qu’il génère ;
 - brancher une API et une FAQ comme sources de vérité ;
 - tester l’agent, lire une trace d’appel d’outil et reconnaître une réponse inventée.
 
@@ -52,7 +52,7 @@ Vérifiez ces points avant de commencer la création de votre agent :
 | Minutes | Tâche | Résultat attendu |
 |---|---|---|
 | 0–5 | Avant de commencer | Accès vérifiés |
-| 5–15 | **Tâche 1** : explorer l’agent de référence | Vous savez où regarder pour valider un agent |
+| 5–15 | **Section 0** : regarder l’agent de référence | Vous savez où regarder pour valider un agent |
 | 15–33 | **Tâche 2** : créer l’application et la recherche | Une vraie session trouvée via l’API |
 | 33–48 | **Tâche 3** : programme sans chevauchement | Ajout réussi, conflit refusé |
 | 48–65 | **Tâche 4** : FAQ et assistance | Réponse issue de la FAQ, ticket créé sans doublon |
@@ -63,9 +63,11 @@ Si une étape bloque plus de deux minutes, signalez-le à l’animateur et passe
 
 ---
 
-## Tâche 1. Explorer l’agent de référence (10 min)
+## Section 0. Regarder l’agent de référence (10 min)
 
 À cette étape, l’animateur montre le concierge terminé. Vous repérez les éléments à vérifier plus tard dans votre propre agent.
+
+**Important :** vous n’avez rien à faire sur votre ordinateur pendant cette section. Ne ouvrez pas encore CX Agent Studio : regardez la démonstration à l’écran et suivez les repères ci-dessous.
 
 Repérez ces quatre éléments sur l’écran de l’animateur :
 
@@ -148,7 +150,7 @@ L’import de la FAQ prend du temps (environ dix minutes lors de la répétition
 
 > Accueil : présente-toi brièvement comme le concierge de l’atelier DevFest et propose de chercher une session. Clôture : une phrase concise. Critère de réussite : une recherche réelle via l’API, avec titre, horaires et trace de l’appel.
 
-6. Arc propose d’abord un plan. Relisez-le : il doit prévoir un agent racine Concierge, un sous-agent Programme et les deux outils `search_sessions` et `get_session`, sans programme personnel, FAQ ni assistance. Si le plan correspond, validez-le, puis attendez qu’Arc ait terminé ses modifications et affiche son compte rendu.
+6. Arc ne demande pas de validation : il affiche un plan, puis enchaîne les modifications. Observez ce qu’il fait à l’écran. Vérifiez que le plan prévoit un agent racine Concierge, un sous-agent Programme et les deux outils `search_sessions` et `get_session`, sans programme personnel, FAQ ni assistance. Attendez qu’Arc ait terminé et affiche son compte rendu.
 
 ### Tester
 
