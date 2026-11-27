@@ -1,5 +1,7 @@
 # Construire le concierge DevFest avec Google CX Agent Studio
 
+> **Important :** cet atelier peut entraîner des frais sur votre projet Google Cloud, compris entre **5 et 10 euros** selon votre utilisation. Ces frais sont facturés par Google Cloud sur le compte de facturation de votre projet. Vérifiez que votre projet est bien rattaché à un compte de facturation avant de commencer.
+
 Dans cet atelier, vous allez construire un assistant qui répond aux questions des participants du DevFest Paris !
 
 En 90 minutes, vous déployez un système conversationnel multi-agents sur CX Agent Studio.
